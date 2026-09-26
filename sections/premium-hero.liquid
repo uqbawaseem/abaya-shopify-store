@@ -11,6 +11,7 @@
 
 <section
   class="homepage-hero color-{{ section.settings.color_scheme }}"
+  data-hero-motion
   style="--hero-overlay-opacity: {{ section.settings.overlay_opacity }};"
 >
   <div class="homepage-hero__media">
@@ -49,15 +50,15 @@
   <div class="homepage-hero__inner page-width">
     <div class="homepage-hero__content homepage-hero__content--{{ section.settings.content_position }}">
       {%- if section.settings.eyebrow != blank -%}
-        <p class="homepage-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        <p class="homepage-eyebrow homepage-hero__sequence">{{ section.settings.eyebrow | escape }}</p>
       {%- endif -%}
       {%- if section.settings.heading != blank -%}
-        <h1 class="homepage-hero__heading h0">{{ section.settings.heading }}</h1>
+        <h1 class="homepage-hero__heading homepage-hero__sequence h0">{{ section.settings.heading }}</h1>
       {%- endif -%}
       {%- if section.settings.text != blank -%}
-        <div class="homepage-richtext">{{ section.settings.text }}</div>
+        <div class="homepage-richtext homepage-hero__sequence">{{ section.settings.text }}</div>
       {%- endif -%}
-      <div class="homepage-button-row">
+      <div class="homepage-button-row homepage-hero__sequence">
         {%- if section.settings.primary_label != blank -%}
           <a
             {% if section.settings.primary_link != blank %}

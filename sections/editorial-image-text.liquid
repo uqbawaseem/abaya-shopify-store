@@ -3,7 +3,7 @@
 <section class="homepage-image-text homepage-image-text--image-{{ section.settings.image_position }} homepage-section color-{{ section.settings.color_scheme }} gradient">
   <div class="page-width">
     <div class="homepage-image-text__grid">
-      <div class="homepage-image-text__media">
+      <div class="homepage-image-text__media" data-reveal>
         {%- if section.settings.image != blank -%}
           {{
             section.settings.image
@@ -19,7 +19,7 @@
           {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
         {%- endif -%}
       </div>
-      <div class="homepage-image-text__content">
+      <div class="homepage-image-text__content" data-reveal style="--reveal-delay: 120ms;">
         {%- if section.settings.eyebrow != blank -%}
           <p class="homepage-eyebrow">{{ section.settings.eyebrow | escape }}</p>
         {%- endif -%}

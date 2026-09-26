@@ -3,7 +3,7 @@
 <section class="homepage-benefits homepage-section color-{{ section.settings.color_scheme }} gradient">
   <div class="page-width">
     {%- if section.settings.heading != blank or section.settings.text != blank -%}
-      <div class="homepage-benefits__header">
+      <div class="homepage-benefits__header" data-reveal>
         {%- if section.settings.eyebrow != blank -%}
           <p class="homepage-eyebrow">{{ section.settings.eyebrow | escape }}</p>
         {%- endif -%}
@@ -18,7 +18,12 @@
 
     <div class="homepage-benefits__grid">
       {%- for block in section.blocks -%}
-        <div class="homepage-benefit" {{ block.shopify_attributes }}>
+        <div
+          class="homepage-benefit"
+          data-reveal
+          style="--reveal-delay: {{ forloop.index0 | times: 110 }}ms;"
+          {{ block.shopify_attributes }}
+        >
           {%- if block.settings.icon != 'none' -%}
             <div class="homepage-benefit__icon" aria-hidden="true">
               <span class="svg-wrapper">

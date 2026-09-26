@@ -56,6 +56,9 @@
         "hijabs"
       ],
       "settings": {
+        "eyebrow": "",
+        "heading": "SHOP THE COLLECTION",
+        "text": "",
         "color_scheme": "scheme-1"
       }
     },
@@ -253,39 +256,6 @@
         "text": "",
         "color_scheme": "scheme-1"
       }
-    },
-    "newsletter": {
-      "type": "newsletter",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "JOIN OUR COMMUNITY",
-            "heading_size": "h1"
-          }
-        },
-        "paragraph": {
-          "type": "paragraph",
-          "settings": {
-            "text": "<p>Discover new collections, thoughtful edits and occasional updates.</p>"
-          }
-        },
-        "email_form": {
-          "type": "email_form",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "heading",
-        "paragraph",
-        "email_form"
-      ],
-      "settings": {
-        "color_scheme": "scheme-2",
-        "full_width": true,
-        "padding_top": 72,
-        "padding_bottom": 80
-      }
     }
   },
   "order": [
@@ -296,7 +266,6 @@
     "featured_abayas",
     "best_sellers",
     "why_shop",
-    "the_edit",
-    "newsletter"
+    "the_edit"
   ]
 }

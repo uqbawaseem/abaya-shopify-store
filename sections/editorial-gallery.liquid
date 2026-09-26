@@ -2,7 +2,7 @@
 
 <section class="homepage-gallery homepage-section color-{{ section.settings.color_scheme }} gradient">
   <div class="page-width">
-    <div class="homepage-gallery__header">
+    <div class="homepage-gallery__header" data-reveal>
       {%- if section.settings.eyebrow != blank -%}
         <p class="homepage-eyebrow">{{ section.settings.eyebrow | escape }}</p>
       {%- endif -%}
@@ -37,6 +37,8 @@
           <a
             href="{{ block.settings.link }}"
             class="homepage-gallery__item{% if block.settings.size == 'large' %} homepage-gallery__item--large{% endif %}"
+            data-reveal
+            style="--reveal-delay: {{ forloop.index0 | times: 90 }}ms;"
             {{ block.shopify_attributes }}
           >
             {{ item_content }}
@@ -44,6 +46,8 @@
         {%- else -%}
           <div
             class="homepage-gallery__item{% if block.settings.size == 'large' %} homepage-gallery__item--large{% endif %}"
+            data-reveal
+            style="--reveal-delay: {{ forloop.index0 | times: 90 }}ms;"
             {{ block.shopify_attributes }}
           >
             {{ item_content }}

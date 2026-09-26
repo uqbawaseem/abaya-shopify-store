@@ -2,9 +2,28 @@
 
 <section class="homepage-categories homepage-section color-{{ section.settings.color_scheme }} gradient">
   <div class="page-width">
+    {%- if section.settings.eyebrow != blank or section.settings.heading != blank or section.settings.text != blank -%}
+      <div class="homepage-categories__header" data-reveal>
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="homepage-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="homepage-categories__heading h1">{{ section.settings.heading | escape }}</h2>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <div class="homepage-richtext">{{ section.settings.text }}</div>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
     <div class="homepage-categories__grid">
       {%- for block in section.blocks -%}
-        <article class="homepage-category-card" {{ block.shopify_attributes }}>
+        <article
+          class="homepage-category-card"
+          data-reveal
+          style="--reveal-delay: {{ forloop.index0 | times: 120 }}ms;"
+          {{ block.shopify_attributes }}
+        >
           <div class="homepage-category-card__media">
             {%- if block.settings.image != blank -%}
               {{
@@ -59,6 +78,22 @@
   "class": "section",
   "max_blocks": 4,
   "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "SHOP THE COLLECTION"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Description"
+    },
     {
       "type": "color_scheme",
       "id": "color_scheme",
