@@ -9,76 +9,294 @@
  */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "hero": {
+      "type": "premium-hero",
+      "settings": {
+        "image_position": "center center",
+        "overlay_opacity": 25,
+        "content_position": "left",
+        "eyebrow": "MODEST WEAR",
+        "heading": "Designed for Quiet Elegance",
+        "text": "<p>A considered collection of abayas and hijabs for effortless, everyday modesty.</p>",
+        "primary_label": "SHOP ABAYAS",
+        "primary_link": "",
+        "secondary_label": "SHOP HIJABS",
+        "secondary_link": "",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "shop_by_category": {
+      "type": "editorial-categories",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "abayas": {
+          "type": "category",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "image_position": "center center",
+            "eyebrow": "",
+            "heading": "ABAYAS",
+            "text": "",
+            "link_label": "SHOP ABAYAS",
+            "link": ""
           }
         },
-        "button": {
-          "type": "buttons",
+        "hijabs": {
+          "type": "category",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "image_position": "center center",
+            "eyebrow": "",
+            "heading": "HIJABS",
+            "text": "",
+            "link_label": "SHOP HIJABS",
+            "link": ""
           }
         }
       },
       "block_order": [
-        "heading",
-        "button"
+        "abayas",
+        "hijabs"
       ],
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "color_scheme": "scheme-1"
       }
     },
-    "featured_collection": {
+    "new_arrivals": {
       "type": "featured-collection",
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
+        "collection": "",
+        "products_to_show": 4,
+        "title": "NEW ARRIVALS",
+        "heading_size": "h1",
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
         "columns_desktop": 4,
-        "color_scheme": "scheme-1",
+        "enable_desktop_slider": false,
         "full_width": false,
         "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
+        "view_all_style": "link",
+        "color_scheme": "scheme-1",
+        "image_ratio": "portrait",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
-        "padding_top": 44,
-        "padding_bottom": 36
+        "swipe_on_mobile": false,
+        "padding_top": 72,
+        "padding_bottom": 52
+      }
+    },
+    "brand_statement": {
+      "type": "editorial-image-text",
+      "settings": {
+        "image_position": "left",
+        "image_focal_position": "center center",
+        "eyebrow": "OUR PHILOSOPHY",
+        "heading": "Modesty, thoughtfully considered.",
+        "text": "<p>Pieces designed around simplicity, comfort and understated elegance.</p>",
+        "link_label": "OUR STORY",
+        "link": "",
+        "color_scheme": "scheme-2"
+      }
+    },
+    "featured_abayas": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "",
+        "products_to_show": 4,
+        "title": "FEATURED ABAYAS",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "link",
+        "color_scheme": "scheme-1",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 72,
+        "padding_bottom": 52
+      }
+    },
+    "best_sellers": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "",
+        "products_to_show": 4,
+        "title": "BEST SELLERS",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "link",
+        "color_scheme": "scheme-1",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 72,
+        "padding_bottom": 52
+      }
+    },
+    "why_shop": {
+      "type": "editorial-benefits",
+      "blocks": {
+        "considered_design": {
+          "type": "benefit",
+          "settings": {
+            "icon": "leaf",
+            "heading": "CONSIDERED DESIGN",
+            "text": "Designed with modest dressing in mind."
+          }
+        },
+        "quality_focus": {
+          "type": "benefit",
+          "settings": {
+            "icon": "ruler",
+            "heading": "QUALITY FOCUS",
+            "text": "Attention to fabric, finish and everyday wear."
+          }
+        },
+        "customer_care": {
+          "type": "benefit",
+          "settings": {
+            "icon": "chat",
+            "heading": "CUSTOMER CARE",
+            "text": "Here to help throughout your shopping experience."
+          }
+        }
+      },
+      "block_order": [
+        "considered_design",
+        "quality_focus",
+        "customer_care"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "",
+        "text": "",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "the_edit": {
+      "type": "editorial-gallery",
+      "blocks": {
+        "image_1": {
+          "type": "image",
+          "settings": {
+            "image_position": "center center",
+            "size": "large",
+            "link": ""
+          }
+        },
+        "image_2": {
+          "type": "image",
+          "settings": {
+            "image_position": "center center",
+            "size": "standard",
+            "link": ""
+          }
+        },
+        "image_3": {
+          "type": "image",
+          "settings": {
+            "image_position": "center center",
+            "size": "standard",
+            "link": ""
+          }
+        },
+        "image_4": {
+          "type": "image",
+          "settings": {
+            "image_position": "center center",
+            "size": "standard",
+            "link": ""
+          }
+        },
+        "image_5": {
+          "type": "image",
+          "settings": {
+            "image_position": "center center",
+            "size": "standard",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "THE EDIT",
+        "text": "",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "JOIN OUR COMMUNITY",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Discover new collections, thoughtful edits and occasional updates.</p>"
+          }
+        },
+        "email_form": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "paragraph",
+        "email_form"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "full_width": true,
+        "padding_top": 72,
+        "padding_bottom": 80
       }
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection"
+    "hero",
+    "shop_by_category",
+    "new_arrivals",
+    "brand_statement",
+    "featured_abayas",
+    "best_sellers",
+    "why_shop",
+    "the_edit",
+    "newsletter"
   ]
 }

@@ -1,0 +1,193 @@
+{{ 'custom-homepage.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign hero_image = section.settings.image
+  if section.settings.mobile_image != blank
+    assign mobile_image = section.settings.mobile_image
+  else
+    assign mobile_image = section.settings.image
+  endif
+-%}
+
+<section
+  class="homepage-hero color-{{ section.settings.color_scheme }}"
+  style="--hero-overlay-opacity: {{ section.settings.overlay_opacity }};"
+>
+  <div class="homepage-hero__media">
+    {%- if hero_image != blank -%}
+      <picture>
+        {%- if mobile_image != blank -%}
+          <source
+            media="(max-width: 749px)"
+            srcset="
+              {%- if mobile_image.width >= 375 -%}{{ mobile_image | image_url: width: 375 }} 375w,{%- endif -%}
+              {%- if mobile_image.width >= 550 -%}{{ mobile_image | image_url: width: 550 }} 550w,{%- endif -%}
+              {%- if mobile_image.width >= 750 -%}{{ mobile_image | image_url: width: 750 }} 750w,{%- endif -%}
+              {{ mobile_image | image_url }} {{ mobile_image.width }}w
+            "
+          >
+        {%- endif -%}
+        {{
+          hero_image
+          | image_url: width: 2400
+          | image_tag:
+            widths: '750, 990, 1200, 1500, 1800, 2200, 2400',
+            sizes: '100vw',
+            loading: 'eager',
+            fetchpriority: 'high',
+            alt: hero_image.alt,
+            style: section.settings.image_position | prepend: 'object-position: '
+        }}
+      </picture>
+    {%- else -%}
+      <div class="homepage-hero__placeholder">
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div class="homepage-hero__inner page-width">
+    <div class="homepage-hero__content homepage-hero__content--{{ section.settings.content_position }}">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="homepage-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h1 class="homepage-hero__heading h0">{{ section.settings.heading }}</h1>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <div class="homepage-richtext">{{ section.settings.text }}</div>
+      {%- endif -%}
+      <div class="homepage-button-row">
+        {%- if section.settings.primary_label != blank -%}
+          <a
+            {% if section.settings.primary_link != blank %}
+              href="{{ section.settings.primary_link }}"
+            {% else %}
+              role="link" aria-disabled="true"
+            {% endif %}
+            class="button"
+          >
+            {{ section.settings.primary_label | escape }}
+          </a>
+        {%- endif -%}
+        {%- if section.settings.secondary_label != blank -%}
+          <a
+            {% if section.settings.secondary_link != blank %}
+              href="{{ section.settings.secondary_link }}"
+            {% else %}
+              role="link" aria-disabled="true"
+            {% endif %}
+            class="button button--secondary"
+          >
+            {{ section.settings.secondary_label | escape }}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Premium hero",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Desktop image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile image"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image focal position",
+      "default": "center center",
+      "options": [
+        { "value": "center center", "label": "Center" },
+        { "value": "center top", "label": "Top" },
+        { "value": "center bottom", "label": "Bottom" },
+        { "value": "left center", "label": "Left" },
+        { "value": "right center", "label": "Right" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 70,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay opacity",
+      "default": 25
+    },
+    {
+      "type": "select",
+      "id": "content_position",
+      "label": "Content position",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "MODEST WEAR"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Designed for Quiet Elegance"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Description",
+      "default": "<p>A considered collection of abayas and hijabs for effortless, everyday modesty.</p>"
+    },
+    {
+      "type": "text",
+      "id": "primary_label",
+      "label": "Primary button label",
+      "default": "SHOP ABAYAS"
+    },
+    {
+      "type": "url",
+      "id": "primary_link",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_label",
+      "label": "Secondary button label",
+      "default": "SHOP HIJABS"
+    },
+    {
+      "type": "url",
+      "id": "secondary_link",
+      "label": "Secondary button link"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Premium hero"
+    }
+  ]
+}
+{% endschema %}

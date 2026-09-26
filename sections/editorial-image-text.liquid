@@ -1,0 +1,127 @@
+{{ 'custom-homepage.css' | asset_url | stylesheet_tag }}
+
+<section class="homepage-image-text homepage-image-text--image-{{ section.settings.image_position }} homepage-section color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    <div class="homepage-image-text__grid">
+      <div class="homepage-image-text__media">
+        {%- if section.settings.image != blank -%}
+          {{
+            section.settings.image
+            | image_url: width: 1500
+            | image_tag:
+              widths: '375, 550, 750, 990, 1200, 1500',
+              sizes: '(min-width: 750px) 50vw, 100vw',
+              loading: 'lazy',
+              alt: section.settings.image.alt,
+              style: section.settings.image_focal_position | prepend: 'object-position: '
+          }}
+        {%- else -%}
+          {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </div>
+      <div class="homepage-image-text__content">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="homepage-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="homepage-image-text__heading h1">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.text != blank -%}
+          <div class="homepage-richtext">{{ section.settings.text }}</div>
+        {%- endif -%}
+        {%- if section.settings.link_label != blank -%}
+          <div class="homepage-button-row">
+            <a
+              {% if section.settings.link != blank %}
+                href="{{ section.settings.link }}"
+              {% else %}
+                role="link" aria-disabled="true"
+              {% endif %}
+              class="button button--secondary"
+            >
+              {{ section.settings.link_label | escape }}
+            </a>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Editorial image text",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "image_focal_position",
+      "label": "Image focal position",
+      "default": "center center",
+      "options": [
+        { "value": "center center", "label": "Center" },
+        { "value": "center top", "label": "Top" },
+        { "value": "center bottom", "label": "Bottom" },
+        { "value": "left center", "label": "Left" },
+        { "value": "right center", "label": "Right" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "OUR PHILOSOPHY"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Modesty, thoughtfully considered."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Pieces designed around simplicity, comfort and understated elegance.</p>"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Button label",
+      "default": "OUR STORY"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Button link"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-2"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Editorial image text"
+    }
+  ]
+}
+{% endschema %}
