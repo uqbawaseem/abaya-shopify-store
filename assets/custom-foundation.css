@@ -1,0 +1,246 @@
+:root {
+  --brand-color-ivory: #f8f3ec;
+  --brand-color-ink: #1c1a17;
+  --brand-color-stone: #9a8f84;
+  --brand-color-taupe: #efe7dd;
+  --brand-color-brown: #6f5847;
+  --brand-color-white: #ffffff;
+  --brand-spacing-section-mobile: 3.2rem;
+  --brand-spacing-section-desktop: 7.2rem;
+  --brand-transition: 180ms ease;
+}
+
+body {
+  color: rgb(var(--color-foreground));
+  letter-spacing: 0;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+.h0,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5 {
+  color: rgb(var(--color-foreground));
+  font-family: var(--font-heading-family);
+  font-style: var(--font-heading-style);
+  font-weight: var(--font-heading-weight);
+  letter-spacing: 0;
+  line-height: 1.08;
+}
+
+.h0 {
+  font-size: calc(var(--font-heading-scale) * 4.8rem);
+}
+
+h1,
+.h1 {
+  font-size: calc(var(--font-heading-scale) * 3.8rem);
+}
+
+h2,
+.h2 {
+  font-size: calc(var(--font-heading-scale) * 3rem);
+}
+
+h3,
+.h3 {
+  font-size: calc(var(--font-heading-scale) * 2.2rem);
+}
+
+.caption-with-letter-spacing {
+  letter-spacing: 0.08rem;
+}
+
+.rte {
+  color: rgba(var(--color-foreground), 0.78);
+}
+
+.rte p,
+.rich-text__text,
+.collection-hero__description {
+  line-height: 1.75;
+}
+
+.page-width {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+@media screen and (min-width: 750px) {
+  .page-width {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .page-width,
+  .header:not(.drawer-menu).page-width {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+}
+
+.section + .section {
+  margin-top: var(--brand-spacing-section-mobile);
+}
+
+@media screen and (min-width: 750px) {
+  .section + .section {
+    margin-top: var(--brand-spacing-section-desktop);
+  }
+}
+
+.button,
+.shopify-challenge__button,
+.customer button,
+button.shopify-payment-button__button--unbranded {
+  min-height: 4.8rem;
+  padding: 0 2.8rem;
+  border-radius: 0;
+  font-family: var(--font-body-family);
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+  transition:
+    background-color var(--brand-transition),
+    border-color var(--brand-transition),
+    color var(--brand-transition),
+    opacity var(--brand-transition);
+}
+
+.button:before,
+.shopify-challenge__button:before,
+.customer button:before,
+.shopify-payment-button__button--unbranded:before {
+  border-radius: 0;
+}
+
+.button:after,
+.shopify-challenge__button:after,
+.customer button:after,
+.shopify-payment-button__button--unbranded:after {
+  border-radius: 0;
+  box-shadow: 0 0 0 var(--buttons-border-width) rgba(var(--color-button), var(--buttons-border-opacity));
+}
+
+.button:hover,
+.shopify-challenge__button:hover,
+.customer button:hover,
+button.shopify-payment-button__button--unbranded:hover {
+  opacity: 0.88;
+}
+
+.button--secondary,
+.button--tertiary {
+  color: rgb(var(--color-secondary-button-text));
+}
+
+.button--secondary:after,
+.button--tertiary:after {
+  box-shadow: 0 0 0 0.1rem rgba(var(--color-secondary-button-text), 0.35);
+}
+
+.field:before,
+.select:before,
+.customer .field:before,
+.customer select:before,
+.localization-form__select:before {
+  border-radius: 0;
+}
+
+.field:after,
+.select:after,
+.customer .field:after,
+.customer select:after,
+.localization-form__select:after {
+  border-radius: 0;
+  box-shadow: 0 0 0 var(--inputs-border-width) rgba(var(--color-foreground), var(--inputs-border-opacity));
+  transition: box-shadow var(--brand-transition);
+}
+
+.field:hover.field:after,
+.select:hover.select:after,
+.customer .field:hover.field:after,
+.customer select:hover.select:after,
+.localization-form__select:hover.localization-form__select:after {
+  box-shadow: 0 0 0 0.1rem rgba(var(--color-foreground), 0.55);
+}
+
+.field__input,
+.select__select,
+.customer .field input,
+.customer select {
+  min-height: 4.8rem;
+  color: rgb(var(--color-foreground));
+  background-color: rgb(var(--color-background));
+  letter-spacing: 0;
+}
+
+.field__label,
+.customer .field label,
+.form__label {
+  color: rgba(var(--color-foreground), 0.68);
+  letter-spacing: 0;
+}
+
+.card__heading,
+.card-information,
+.price {
+  letter-spacing: 0;
+}
+
+.card__information {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.badge {
+  border-radius: 0;
+  letter-spacing: 0.08rem;
+  text-transform: uppercase;
+}
+
+.global-media-settings,
+.media,
+.card,
+.content-container,
+.button,
+.field,
+.select {
+  box-shadow: none;
+}
+
+@media screen and (max-width: 749px) {
+  .h0 {
+    font-size: calc(var(--font-heading-scale) * 3.8rem);
+  }
+
+  h1,
+  .h1 {
+    font-size: calc(var(--font-heading-scale) * 3.1rem);
+  }
+
+  h2,
+  .h2 {
+    font-size: calc(var(--font-heading-scale) * 2.5rem);
+  }
+
+  .button,
+  .shopify-challenge__button,
+  .customer button,
+  button.shopify-payment-button__button--unbranded {
+    min-height: 4.6rem;
+    padding-left: 2.2rem;
+    padding-right: 2.2rem;
+  }
+}
