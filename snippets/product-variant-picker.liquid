@@ -34,8 +34,15 @@
           endif
         endif
       -%}
+      {%- liquid
+        assign option_handle = option.name | handleize
+        assign single_option_class = ''
+        if option.values.size == 1
+          assign single_option_class = ' product-form__input--single-option'
+        endif
+      -%}
       {%- if picker_type == 'swatch' -%}
-        <fieldset class="js product-form__input product-form__input--swatch">
+        <fieldset class="js product-form__input product-form__input--swatch product-form__input--option-{{ option_handle }}{{ single_option_class }}">
           <legend class="form__label">
             {{ option.name }}:
             <span data-selected-value>
@@ -50,7 +57,7 @@
           %}
         </fieldset>
       {%- elsif picker_type == 'button' -%}
-        <fieldset class="js product-form__input product-form__input--pill">
+        <fieldset class="js product-form__input product-form__input--pill product-form__input--option-{{ option_handle }}{{ single_option_class }}">
           <legend class="form__label">{{ option.name }}</legend>
           {% render 'product-variant-options',
             product: product,
@@ -60,7 +67,7 @@
           %}
         </fieldset>
       {%- else -%}
-        <div class="product-form__input product-form__input--dropdown">
+        <div class="product-form__input product-form__input--dropdown product-form__input--option-{{ option_handle }}{{ single_option_class }}">
           <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
             {{ option.name }}
           </label>

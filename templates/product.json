@@ -12,19 +12,22 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "vendor": {
-          "type": "text",
-          "settings": {
-            "text": "{{ product.vendor }}",
-            "text_style": "uppercase"
-          }
-        },
         "title": {
           "type": "title",
           "settings": {}
         },
+        "color_summary": {
+          "type": "option_summary",
+          "settings": {
+            "option_name": "Color"
+          }
+        },
         "price": {
           "type": "price",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
           "settings": {}
         },
         "variant_picker": {
@@ -32,6 +35,13 @@
           "settings": {
             "picker_type": "button",
             "swatch_shape": "circle"
+          }
+        },
+        "size_guide": {
+          "type": "size_guide",
+          "settings": {
+            "heading": "Size Guide",
+            "content": "<p>Use this guide as a placeholder for finalized sizing notes. Add garment measurements, fit guidance and model sizing when confirmed.</p>"
           }
         },
         "quantity_selector": {
@@ -45,9 +55,48 @@
             "show_gift_card_recipient": true
           }
         },
-        "description": {
-          "type": "description",
-          "settings": {}
+        "services": {
+          "type": "product_services",
+          "settings": {
+            "heading_1": "Considered Design",
+            "text_1": "Designed with modest dressing in mind.",
+            "heading_2": "Quality Focus",
+            "text_2": "Attention to fabric, finish and everyday wear.",
+            "heading_3": "Customer Care",
+            "text_3": "Here to help throughout your shopping experience."
+          }
+        },
+        "details": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Details",
+            "icon": "none",
+            "content": "<p>Review the product description above for style-specific details. Additional garment information can be added here as it becomes finalized.</p>"
+          }
+        },
+        "size_fit": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Size & Fit",
+            "icon": "none",
+            "content": "<p>Select your usual size, or use the Size Guide above when detailed sizing guidance is added.</p>"
+          }
+        },
+        "care": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Care",
+            "icon": "none",
+            "content": "<p>Care guidance can be updated here once final garment care instructions are confirmed.</p>"
+          }
+        },
+        "delivery_returns": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Delivery & Returns",
+            "icon": "none",
+            "content": "<p>Delivery and returns information can be updated here once store policies are finalized.</p>"
+          }
         },
         "share": {
           "type": "share",
@@ -57,23 +106,29 @@
         }
       },
       "block_order": [
-        "vendor",
         "title",
+        "color_summary",
         "price",
+        "description",
         "variant_picker",
+        "size_guide",
         "quantity_selector",
         "buy_buttons",
-        "description",
+        "services",
+        "details",
+        "size_fit",
+        "care",
+        "delivery_returns",
         "share"
       ],
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
         "media_size": "large",
-        "constrain_to_viewport": true,
-        "media_fit": "contain",
-        "gallery_layout": "stacked",
-        "mobile_thumbnails": "hide",
+        "constrain_to_viewport": false,
+        "media_fit": "cover",
+        "gallery_layout": "columns",
+        "mobile_thumbnails": "show",
         "media_position": "left",
         "image_zoom": "lightbox",
         "hide_variants": true,
@@ -98,7 +153,7 @@
         "columns_desktop": 4,
         "columns_mobile": "2",
         "color_scheme": "scheme-1",
-        "image_ratio": "square",
+        "image_ratio": "portrait",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,

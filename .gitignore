@@ -1,0 +1,12 @@
+.DS_Store
+**/.DS_Store
+.env
+.env.*
+tmp-demo-catalog-report.json
+tmp-signature-open-abaya-media-report.json
+tmp-essential-belted-abaya-media-report.json
+tmp-everyday-flow-abaya-media-report.json
+tmp-premium-chiffon-hijab-media-report.json
+tmp-soft-jersey-hijab-media-report.json
+tmp-essential-chiffon-hijab-media-report.json
+tmp-abaya-catalog-expansion-report.json

@@ -13,7 +13,7 @@
       "type": "premium-hero",
       "settings": {
         "image_position": "center center",
-        "overlay_opacity": 25,
+        "overlay_opacity": 0,
         "content_position": "left",
         "eyebrow": "MODEST WEAR",
         "heading": "Designed for Quiet Elegance",
@@ -65,7 +65,7 @@
     "new_arrivals": {
       "type": "featured-collection",
       "settings": {
-        "collection": "",
+        "collection": "new-arrivals",
         "products_to_show": 4,
         "title": "NEW ARRIVALS",
         "heading_size": "h1",
@@ -106,7 +106,7 @@
     "featured_abayas": {
       "type": "featured-collection",
       "settings": {
-        "collection": "",
+        "collection": "featured-abayas",
         "products_to_show": 4,
         "title": "FEATURED ABAYAS",
         "heading_size": "h1",
@@ -134,7 +134,7 @@
     "best_sellers": {
       "type": "featured-collection",
       "settings": {
-        "collection": "",
+        "collection": "best-sellers",
         "products_to_show": 4,
         "title": "BEST SELLERS",
         "heading_size": "h1",

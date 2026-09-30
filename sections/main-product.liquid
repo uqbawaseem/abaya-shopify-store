@@ -15,6 +15,7 @@
   {{ 'component-slider.css' | asset_url | stylesheet_tag }}
   {{ 'component-rating.css' | asset_url | stylesheet_tag }}
   {{ 'component-deferred-media.css' | asset_url | stylesheet_tag }}
+  {{ 'custom-product-page.css' | asset_url | stylesheet_tag }}
 
   {% unless product.has_only_default_variant %}
     {{ 'component-product-variant-picker.css' | asset_url | stylesheet_tag }}
@@ -106,6 +107,24 @@
                       </h2>
                     </a>
                   </div>
+                {%- when 'option_summary' -%}
+                  {%- liquid
+                    assign summary_option = blank
+                    assign summary_option_name = block.settings.option_name | downcase
+                    for option in product.options_with_values
+                      assign normalized_option_name = option.name | downcase
+                      if normalized_option_name == summary_option_name and option.values.size == 1
+                        assign summary_option = option
+                        break
+                      endif
+                    endfor
+                  -%}
+                  {%- if summary_option != blank -%}
+                    <div class="product__option-summary" {{ block.shopify_attributes }}>
+                      <span class="product__option-summary-label">{{ summary_option.name }}</span>
+                      <span class="product__option-summary-value">{{ summary_option.selected_value }}</span>
+                    </div>
+                  {%- endif -%}
                 {%- when 'price' -%}
                   <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
                     {%- render 'price',
@@ -491,6 +510,16 @@
                     block: block,
                     product_form_id: product_form_id
                   %}
+                {%- when 'size_guide' -%}
+                  <details class="product__size-guide" {{ block.shopify_attributes }}>
+                    <summary>
+                      <span>{{ block.settings.heading }}</span>
+                      {{- 'icon-caret.svg' | inline_asset_content -}}
+                    </summary>
+                    <div class="product__size-guide-content rte">
+                      {{ block.settings.content }}
+                    </div>
+                  </details>
                 {%- when 'buy_buttons' -%}
                   {%- render 'buy-buttons',
                     block: block,
@@ -499,6 +528,33 @@
                     section_id: section.id,
                     show_pickup_availability: true
                   -%}
+                {%- when 'product_services' -%}
+                  <div class="product__services" {{ block.shopify_attributes }}>
+                    {%- if block.settings.heading_1 != blank -%}
+                      <div class="product__service">
+                        <span class="product__service-title">{{ block.settings.heading_1 }}</span>
+                        {%- if block.settings.text_1 != blank -%}
+                          <span class="product__service-text">{{ block.settings.text_1 }}</span>
+                        {%- endif -%}
+                      </div>
+                    {%- endif -%}
+                    {%- if block.settings.heading_2 != blank -%}
+                      <div class="product__service">
+                        <span class="product__service-title">{{ block.settings.heading_2 }}</span>
+                        {%- if block.settings.text_2 != blank -%}
+                          <span class="product__service-text">{{ block.settings.text_2 }}</span>
+                        {%- endif -%}
+                      </div>
+                    {%- endif -%}
+                    {%- if block.settings.heading_3 != blank -%}
+                      <div class="product__service">
+                        <span class="product__service-title">{{ block.settings.heading_3 }}</span>
+                        {%- if block.settings.text_3 != blank -%}
+                          <span class="product__service-text">{{ block.settings.text_3 }}</span>
+                        {%- endif -%}
+                      </div>
+                    {%- endif -%}
+                  </div>
                 {%- when 'rating' -%}
                   {%- if product.metafields.reviews.rating.value != blank -%}
                     <div class="rating-wrapper">
@@ -800,6 +856,19 @@
       "limit": 1
     },
     {
+      "type": "option_summary",
+      "name": "Option summary",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "option_name",
+          "label": "Option name",
+          "default": "Color"
+        }
+      ]
+    },
+    {
       "type": "price",
       "name": "t:sections.main-product.blocks.price.name",
       "limit": 1
@@ -940,6 +1009,68 @@
           "default": true,
           "label": "t:sections.main-product.blocks.buy_buttons.settings.show_gift_card_recipient.label",
           "info": "t:sections.main-product.blocks.buy_buttons.settings.show_gift_card_recipient.info"
+        }
+      ]
+    },
+    {
+      "type": "size_guide",
+      "name": "Size guide",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Size Guide"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Use this guide as a placeholder for finalized sizing notes. Add garment measurements, fit guidance and model sizing when confirmed.</p>"
+        }
+      ]
+    },
+    {
+      "type": "product_services",
+      "name": "Service notes",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading_1",
+          "label": "First heading",
+          "default": "Considered Design"
+        },
+        {
+          "type": "text",
+          "id": "text_1",
+          "label": "First text",
+          "default": "Designed with modest dressing in mind."
+        },
+        {
+          "type": "text",
+          "id": "heading_2",
+          "label": "Second heading",
+          "default": "Quality Focus"
+        },
+        {
+          "type": "text",
+          "id": "text_2",
+          "label": "Second text",
+          "default": "Attention to fabric, finish and everyday wear."
+        },
+        {
+          "type": "text",
+          "id": "heading_3",
+          "label": "Third heading",
+          "default": "Customer Care"
+        },
+        {
+          "type": "text",
+          "id": "text_3",
+          "label": "Third text",
+          "default": "Here to help throughout your shopping experience."
         }
       ]
     },

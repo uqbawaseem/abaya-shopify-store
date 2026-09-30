@@ -51,7 +51,7 @@
 
 .homepage-hero {
   position: relative;
-  min-height: min(84rem, calc(100vh - var(--header-height, 0px)));
+  min-height: clamp(62rem, 82vh, 88rem);
   isolation: isolate;
   background: rgb(var(--color-background));
 }
@@ -71,7 +71,10 @@
 
 .homepage-hero__media:after {
   content: '';
-  background: rgba(0, 0, 0, calc(var(--hero-overlay-opacity, 28) / 100));
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.42), rgba(0, 0, 0, 0.14) 48%, rgba(0, 0, 0, 0.04)),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.18), transparent 42%),
+    rgba(0, 0, 0, calc(var(--hero-overlay-opacity, 18) / 100));
 }
 
 .homepage-hero__media img,
@@ -94,7 +97,7 @@
 }
 
 .homepage-hero__content {
-  max-width: 66rem;
+  max-width: 62rem;
   color: rgb(var(--color-background));
 }
 
@@ -115,7 +118,7 @@
 }
 
 .homepage-hero__heading {
-  max-width: 9.8em;
+  max-width: 8.8em;
   margin: 0;
   font-size: calc(var(--font-heading-scale) * 5.2rem);
   line-height: 1;
@@ -128,7 +131,7 @@
 }
 
 .homepage-hero__content .homepage-richtext {
-  max-width: 52rem;
+  max-width: 48rem;
   margin-top: 2.4rem;
   font-size: 1.65rem;
 }
@@ -178,7 +181,7 @@
 
 .homepage-category-card {
   position: relative;
-  min-height: 44rem;
+  min-height: 46rem;
   overflow: hidden;
   color: rgb(var(--color-background));
   isolation: isolate;
@@ -199,7 +202,9 @@
 
 .homepage-category-card__media:after {
   content: '';
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.48), rgba(0, 0, 0, 0.08));
+  background:
+    linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.12) 58%, rgba(0, 0, 0, 0.02)),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.2), transparent 62%);
 }
 
 .homepage-category-card__media img,
@@ -251,7 +256,7 @@
 }
 
 .homepage-image-text__media {
-  min-height: 44rem;
+  min-height: 46rem;
   background: rgba(var(--color-foreground), 0.045);
 }
 
@@ -265,7 +270,7 @@
 }
 
 .homepage-image-text__content {
-  max-width: 60rem;
+  max-width: 56rem;
 }
 
 .homepage-image-text__heading {
@@ -328,7 +333,7 @@
 .homepage-gallery__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 1.2rem;
 }
 
 .homepage-gallery__item {
@@ -371,12 +376,12 @@ a.homepage-gallery__item:hover img {
   }
 
   .homepage-category-card {
-    min-height: 64rem;
+    min-height: 66rem;
   }
 
   .homepage-image-text__grid {
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-    gap: 7.2rem;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    gap: 8rem;
   }
 
   .homepage-image-text--image-right .homepage-image-text__media {
@@ -393,24 +398,37 @@ a.homepage-gallery__item:hover img {
   }
 
   .homepage-gallery__grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: 1.6rem;
   }
 
   .homepage-gallery__item {
-    min-height: 32rem;
+    min-height: 28rem;
   }
 
   .homepage-gallery__item--large {
     grid-column: span 2;
     grid-row: span 2;
+    min-height: 58rem;
+  }
+
+  .homepage-gallery__item:nth-child(2),
+  .homepage-gallery__item:nth-child(4) {
+    grid-column: span 1;
+    min-height: 58rem;
+  }
+
+  .homepage-gallery__item:nth-child(3),
+  .homepage-gallery__item:nth-child(5) {
+    grid-column: span 1;
+    min-height: 28.2rem;
   }
 }
 
 @media screen and (min-width: 990px) {
   main[data-template='index'] .collection .page-width,
   main[data-template='index'] .collection .page-width-desktop {
-    max-width: min(156rem, calc(100vw - 8rem));
+    max-width: min(164rem, calc(100vw - 6.4rem));
   }
 
   main[data-template='index'] .collection__title.title-wrapper {
@@ -423,17 +441,31 @@ a.homepage-gallery__item:hover img {
   }
 
   main[data-template='index'] .product-grid {
-    --grid-desktop-horizontal-spacing: 3rem;
-    --grid-desktop-vertical-spacing: 4.8rem;
+    --grid-desktop-horizontal-spacing: 3.2rem;
+    --grid-desktop-vertical-spacing: 5.2rem;
   }
 
   main[data-template='index'] .card__heading {
-    font-size: 1.6rem;
+    font-size: 1.64rem;
     line-height: 1.35;
   }
 
   main[data-template='index'] .price {
     font-size: 1.5rem;
+  }
+
+  main[data-template='index'] .collection--product-count-3 .product-grid {
+    --grid-desktop-horizontal-spacing: 3.6rem;
+    justify-content: center;
+  }
+
+  main[data-template='index'] .collection--product-count-3 .grid--4-col-desktop > .grid__item {
+    width: calc(33.333% - var(--grid-desktop-horizontal-spacing) * 2 / 3);
+    max-width: calc(33.333% - var(--grid-desktop-horizontal-spacing) * 2 / 3);
+  }
+
+  main[data-template='index'] .collection--product-count-3 .card__heading {
+    font-size: 1.72rem;
   }
 
   .homepage-hero__inner {
@@ -442,7 +474,7 @@ a.homepage-gallery__item:hover img {
   }
 
   .homepage-hero__heading {
-    font-size: calc(var(--font-heading-scale) * 7.6rem);
+    font-size: clamp(calc(var(--font-heading-scale) * 6.8rem), 5.7vw, calc(var(--font-heading-scale) * 8.4rem));
   }
 
   .homepage-category-card__content {
@@ -457,7 +489,13 @@ a.homepage-gallery__item:hover img {
 
 @media screen and (max-width: 749px) {
   .homepage-hero {
-    min-height: 58rem;
+    min-height: 64rem;
+  }
+
+  .homepage-hero__media:after {
+    background:
+      linear-gradient(0deg, rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.18) 48%, rgba(0, 0, 0, 0.02)),
+      rgba(0, 0, 0, calc(var(--hero-overlay-opacity, 18) / 100));
   }
 
   .homepage-hero__inner {
@@ -502,7 +540,7 @@ a.homepage-gallery__item:hover img {
   }
 
   .homepage-category-card {
-    min-height: 40rem;
+    min-height: 42rem;
   }
 
   .homepage-category-card__content {
@@ -514,17 +552,29 @@ a.homepage-gallery__item:hover img {
   }
 
   .homepage-image-text__media {
-    min-height: 34rem;
+    min-height: 36rem;
   }
 
-  .homepage-gallery__item:nth-child(n + 5) {
-    display: none;
+  .homepage-gallery__grid {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+  }
+
+  .homepage-gallery__item,
+  .homepage-gallery__item--large {
+    grid-column: auto;
+    min-height: 38rem;
+  }
+
+  .homepage-gallery__item:nth-child(3),
+  .homepage-gallery__item:nth-child(5) {
+    min-height: 26rem;
   }
 }
 
 @media screen and (min-width: 1400px) {
   .homepage-hero__heading {
-    font-size: calc(var(--font-heading-scale) * 8.4rem);
+    font-size: calc(var(--font-heading-scale) * 8.6rem);
   }
 }
 

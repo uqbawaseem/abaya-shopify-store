@@ -7,6 +7,8 @@
   else
     assign mobile_image = section.settings.image
   endif
+  assign fallback_desktop_image = 'homepage-hero-desktop.png'
+  assign fallback_mobile_image = 'homepage-hero-mobile.png'
 -%}
 
 <section
@@ -15,7 +17,7 @@
   style="--hero-overlay-opacity: {{ section.settings.overlay_opacity }};"
 >
   <div class="homepage-hero__media">
-    {%- if hero_image != blank -%}
+    {%- if hero_image != blank or fallback_desktop_image != blank -%}
       <picture>
         {%- if mobile_image != blank -%}
           <source
@@ -27,18 +29,35 @@
               {{ mobile_image | image_url }} {{ mobile_image.width }}w
             "
           >
+        {%- else -%}
+          <source
+            media="(max-width: 749px)"
+            srcset="{{ fallback_mobile_image | asset_url }}"
+          >
         {%- endif -%}
-        {{
-          hero_image
-          | image_url: width: 2400
-          | image_tag:
-            widths: '750, 990, 1200, 1500, 1800, 2200, 2400',
-            sizes: '100vw',
-            loading: 'eager',
-            fetchpriority: 'high',
-            alt: hero_image.alt,
-            style: section.settings.image_position | prepend: 'object-position: '
-        }}
+        {%- if hero_image != blank -%}
+          {{
+            hero_image
+            | image_url: width: 2400
+            | image_tag:
+              widths: '750, 990, 1200, 1500, 1800, 2200, 2400',
+              sizes: '100vw',
+              loading: 'eager',
+              fetchpriority: 'high',
+              alt: hero_image.alt,
+              style: section.settings.image_position | prepend: 'object-position: '
+          }}
+        {%- else -%}
+          <img
+            src="{{ fallback_desktop_image | asset_url }}"
+            alt="Editorial modest fashion campaign"
+            loading="eager"
+            fetchpriority="high"
+            style="object-position: {{ section.settings.image_position }};"
+            width="1944"
+            height="809"
+          >
+        {%- endif -%}
       </picture>
     {%- else -%}
       <div class="homepage-hero__placeholder">

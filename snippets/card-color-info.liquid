@@ -1,0 +1,27 @@
+{%- comment -%}
+  Outputs a concise color summary when a product has a Color/Colour option.
+{%- endcomment -%}
+{%- liquid
+  assign color_option_values = ''
+
+  for option in product.options_with_values
+    assign option_name = option.name | downcase
+    if option_name contains 'color' or option_name contains 'colour'
+      capture color_option_values
+        for value in option.values
+          unless forloop.first
+            echo ', '
+          endunless
+          echo value
+        endfor
+      endcapture
+      break
+    endif
+  endfor
+-%}
+
+{%- if color_option_values != blank -%}
+  <p class="card-information__colors caption-large">
+    {{ color_option_values | escape }}
+  </p>
+{%- endif -%}
